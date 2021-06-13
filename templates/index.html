@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>COVID-19 Dashboard</title>
+  </head>
+  <body>
+    <input type ="button" onclick="javascript:location.href='/import_data/'" value="更新最新資料（需花點時間）">
+    </input>
+    {% if messages %}
+    <script>
+      {% for msg in messages %}
+          alert('{{ msg.message }}');
+      {% endfor %}
+    </script>
+    {% endif %}
+    <div class="container">
+      <h1>HOME</h1>
+      <h2>Hello World!</h2>
+    </div>
+  </body>
+</html>
