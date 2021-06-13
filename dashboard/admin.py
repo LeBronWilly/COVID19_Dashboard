@@ -12,8 +12,8 @@ class covid19Admin(admin.ModelAdmin):
     list_display = ("country_ch","country_en",'cases', 'deaths')
     # list_filter = ['country_ch']
     fields = ["cases",'deaths']
-    search_fields=('country_ch')
-    # ordering=('cases')
-    ordering=('-cases')   #遞減排序
+    search_fields=['country_ch']
+    # ordering=['cases']
+    ordering=['-cases']   # 遞減排序
 
 admin.site.register(covid19,covid19Admin)

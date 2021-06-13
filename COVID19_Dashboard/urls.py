@@ -27,10 +27,10 @@ urlpatterns = [
     path('import_data/', import_data, name='import_data'),
 
     url(r'^listone/$', views.listone),
-    url(r'^listall/$', views.listall),
-    url(r'^insert/$', views.insert),
-    url(r'^modify/$', views.modify),
-    url(r'^delete/$', views.delete),
+    # url(r'^listall/$', views.listall),
+    # url(r'^insert/$', views.insert),
+    # url(r'^modify/$', views.modify),
+    # url(r'^delete/$', views.delete),
 
 
     # url(r'^$', sayhello),

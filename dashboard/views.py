@@ -11,6 +11,7 @@ from .models import covid19
 
 # Create your views here.
 def index(request):
+    covid19_items = covid19.objects.all().order_by('-cases') [:10]
     return render(request, 'index.html', locals())
 
 '''
@@ -46,7 +47,13 @@ def import_data(request):
     return HttpResponseRedirect(reverse(index))
 
 
-
+# objects.get()取得一筆資料
+def listone(request): 
+    try: 
+        unit = covid19.objects.get(country_en="Taiwan") #讀取一筆資料
+    except:
+        errormessage = " (讀取錯誤!)"
+    return render(request, "listone.html", locals())
 
 
 
