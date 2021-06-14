@@ -60,12 +60,12 @@
     </input>
     {% comment %} <h2>上次更新時間：{{ updated_time }}</h2> {% endcomment %}
     
-    <h2>顯示covid19前10筆資料</h2>
+    <h2>顯示covid19之{{ n }}筆資料</h2>
     <table border="1" cellpadding="0" cellspacing="0">
-        <th>國家中文名</th>
-        <th>國家英文名</th>
-        <th>確診數</th>
-        <th>死亡數</th>
+        <th>國家地區中文名</th>
+        <th>國家地區英文名</th>
+        <th>累積病例數</th>
+        <th>累積死亡數</th>
         <th>資料建立時間</th>
         <th>資料更新時間</th>
     {% for covid19_item in covid19_items %}
@@ -88,7 +88,7 @@
     </script>
     {% endif %}
     <p>
-    <input type ="button" onclick="javascript:location.href='/show_bar/'" value="繪出/更新長條圖">
+    <input type ="button" onclick="javascript:location.href='/show_bar/'" value="更新/繪出長條圖">
     </input>
     <p>
     <img src="static/images/barchart1.png" />
