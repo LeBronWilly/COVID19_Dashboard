@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf.urls import url
 # from dashboard.views import hello2, hello3, hello4
-from dashboard.views import import_data, index
+from dashboard.views import import_data, index,show_bar
 from dashboard import views
 
 
@@ -25,7 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
     path('import_data/', import_data, name='import_data'),
-
+    path('show_bar/', show_bar, name='show_bar'),
     url(r'^listone/$', views.listone),
     # url(r'^listall/$', views.listall),
     # url(r'^insert/$', views.insert),

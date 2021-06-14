@@ -14,13 +14,20 @@ import matplotlib
 matplotlib.use('Agg')
 from matplotlib import pyplot as plt
 import numpy as np
+import time
 
-
+# covid19_items = covid19.objects.all().order_by('-cases') [:10]
 
 # Create your views here.
 def index(request):
     covid19_items = covid19.objects.all().order_by('-cases') [:10]
+    context = {'covid19_items':covid19_items}
+    return render(request, 'index.html', context)
 
+
+
+def show_bar(request):
+    covid19_items = covid19.objects.all().order_by('-cases') [:10]
     covid19_countries = []
     for covid19_item in covid19_items:
         covid19_countries.append(str(covid19_item.country_ch))
@@ -60,9 +67,7 @@ def index(request):
     plt.savefig('static/images/barchart2.png',bbox_inches='tight',pad_inches=0.0)
     plt.close('all')
 
-    return render(request, 'index.html', locals())
-
-
+    return HttpResponseRedirect(reverse(index))
 
 
 '''
@@ -79,22 +84,23 @@ def import_data(request):
             for data in datas[1:]:
                 try:
                     unit = covid19.objects.get(country_ch=data[0])
-                    if unit.cases != data[2].replace(',', ''):
-                        unit.cases = data[2].replace(',', '')
-                    if unit.deaths != data[3].replace(',', ''):
-                        unit.deaths = data[3].replace(',', '')
-                    unit.save()
+                    if unit.cases != int(data[2].replace(',', '')) or unit.deaths != int(data[3].replace(',', '')):
+                        unit.cases = int(data[2].replace(',', ''))
+                        unit.deaths = int(data[3].replace(',', ''))
+                        unit.save()
                 except:
                     is_data1 = covid19.objects.filter(country_ch=data[0])
                     is_data2 = covid19.objects.filter(country_en=data[1])
                     is_data3 = covid19.objects.filter(cases=data[2].replace(',', ''))
                     is_data4 = covid19.objects.filter(deaths=data[3].replace(',', ''))
                     if not (is_data1 and is_data2 and is_data3 and is_data4):
-                        data = covid19(country_ch=data[0], country_en=data[1], cases=data[2].replace(',', ''), deaths=data[3].replace(',', ''))
+                        data = covid19(country_ch=data[0], country_en=data[1], cases=int(data[2].replace(',', '')), deaths=int(data[3].replace(',', '')))
                         data.save()
         messages.error(request, '最新資料更新成功！') 
     except:
         messages.error(request, '最新資料更新失敗') 
+    updated_time = time.strftime("%a %b %d %H:%M:%S %Y", time.localtime())
+    # return render(request, "index.html", locals())
     return HttpResponseRedirect(reverse(index))
 
 

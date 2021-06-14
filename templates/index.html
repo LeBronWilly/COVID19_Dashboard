@@ -58,20 +58,24 @@
     </div>
     <input type ="button" onclick="javascript:location.href='/import_data/'" value="更新最新資料（需花點時間）">
     </input>
+    {% comment %} <h2>上次更新時間：{{ updated_time }}</h2> {% endcomment %}
+    
     <h2>顯示covid19前10筆資料</h2>
     <table border="1" cellpadding="0" cellspacing="0">
         <th>國家中文名</th>
         <th>國家英文名</th>
         <th>確診數</th>
         <th>死亡數</th>
-        <th>更新時間</th>
+        <th>資料建立時間</th>
+        <th>資料更新時間</th>
     {% for covid19_item in covid19_items %}
         <tr>
-            <td style="width:200px;" align='center' valign="middle">{{ covid19_item.country_ch }} </td>
-            <td style="width:200px;" align='center' valign="middle">{{ covid19_item.country_en }} </td>
-            <td style="width:200px;" align='center' valign="middle">{{ covid19_item.cases}} </td>
-            <td style="width:200px;" align='center' valign="middle">{{ covid19_item.deaths }} </td>
-            <td style="width:200px;" align='center' valign="middle">{{ covid19_item.updated_time }} </td>
+            <td style="width:200px;" align='center' valign="middle"> {{ covid19_item.country_ch }} </td>
+            <td style="width:200px;" align='center' valign="middle"> {{ covid19_item.country_en }} </td>
+            <td style="width:200px;" align='center' valign="middle"> {{ covid19_item.cases}} </td>
+            <td style="width:200px;" align='center' valign="middle"> {{ covid19_item.deaths }} </td>
+            <td style="width:200px;" align='center' valign="middle"> {{ covid19_item.created_time }} </td>
+            <td style="width:200px;" align='center' valign="middle"> {{ covid19_item.updated_time }} </td>
         </tr>
     {% endfor %}
   </table>
@@ -83,6 +87,9 @@
       {% endfor %}
     </script>
     {% endif %}
+    <p>
+    <input type ="button" onclick="javascript:location.href='/show_bar/'" value="繪出長條圖">
+    </input>
     <p>
     <img src="static/images/barchart1.png" />
     <p>
