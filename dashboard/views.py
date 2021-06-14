@@ -47,7 +47,7 @@ def show_bar(request):
     plt.grid(True)
     for a,b in zip(x, covid19_cases):
         plt.text(a, b-b, '%.0f' % b, ha='center', va= 'bottom',fontsize=12,color="white")
-    plt.savefig('static/images/barchart1.png',bbox_inches='tight',pad_inches=0.0)
+    plt.savefig('static/images/barchart1.png',pad_inches=0.0) # ,bbox_inches='tight'
     plt.close('all')
 
     covid19_deaths = []
@@ -64,7 +64,7 @@ def show_bar(request):
     plt.grid(True)
     for a,b in zip(x, covid19_deaths):
         plt.text(a, b-b, '%.0f' % b, ha='center', va= 'bottom',fontsize=12,color="white")
-    plt.savefig('static/images/barchart2.png',bbox_inches='tight',pad_inches=0.0)
+    plt.savefig('static/images/barchart2.png',pad_inches=0.0) # ,bbox_inches='tight'
     plt.close('all')
 
     return HttpResponseRedirect(reverse(index))
