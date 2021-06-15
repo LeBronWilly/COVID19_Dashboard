@@ -26,15 +26,6 @@ urlpatterns = [
     path('', index, name='index'),
     path('import_data/', import_data, name='import_data'),
     path('show_bar/', show_bar, name='show_bar'),
-    url(r'^listone/$', views.listone),
-    # url(r'^listall/$', views.listall),
-    # url(r'^insert/$', views.insert),
-    # url(r'^modify/$', views.modify),
-    # url(r'^delete/$', views.delete),
+    
 
-
-    # url(r'^$', sayhello),
-    # url(r'^hello2/(\w+)/$', hello2),
-    # url(r'^hello3/(\w+)/$', hello3),
-    # url(r'^hello4/(\w+)/$', hello4),
 ]

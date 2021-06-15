@@ -115,22 +115,7 @@ def import_data(request):
     return HttpResponseRedirect(reverse(index))
 
 
-# objects.get()取得一筆資料
-def listone(request):
-    try:
-        unit = covid19.objects.get(country_en="Taiwan")  # 讀取一筆資料
-    except:
-        errormessage = " (讀取錯誤!)"
-    return render(request, "listone.html", locals())
 
 
-# def sayhello(request):
-#     return HttpResponse("Hello django!")
-# def hello2(reuest,username):
-#     return HttpResponse("Hello" + username)
-# def hello3(request,username):
-#    now=datetime.now()
-#    return render(request,"hello3.html",locals())
-# def hello4(request,username):
-#    now=datetime.now()
-#    return render(request,"hello4.html",locals())
+
+
