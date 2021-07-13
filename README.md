@@ -1,5 +1,5 @@
-# COVID19_Dashboard
-很陽春的COVID-19儀表板
+# COVID19_Python
+很陽春的COVID-19視覺化
 
 ##Data Table：
 <br>
