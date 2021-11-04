@@ -22,14 +22,14 @@ matplotlib.use('Agg')
 
 
 def index(request):
-    covid19_items = covid19.objects.all().order_by('-cases')[:10]
+    covid19_items = covid19.objects.all().order_by('-cases')[:20]
     n = len(covid19_items)
     context = {'covid19_items': covid19_items, 'n': n}
     return render(request, 'index.html', locals())
 
 
 def show_bar(request):
-    covid19_items = covid19.objects.all().order_by('-cases')[:10]
+    covid19_items = covid19.objects.all().order_by('-cases')[:20]
     covid19_countries = []
     for covid19_item in covid19_items:
         covid19_countries.append(str(covid19_item.country_ch))
@@ -53,6 +53,8 @@ def show_bar(request):
     plt.savefig('static/images/barchart1.png',
                 pad_inches=0.0)  # ,bbox_inches='tight'
     plt.close('all')
+
+
 
     covid19_deaths = []
     for covid19_item in covid19_items:
